@@ -29,9 +29,12 @@ class IssueList extends Component {
                 <div>
                     {
                         issueData.map((issue, index) => (
-                            <ul>
-                                <li key={issue.id}><Issue issue = {issue} /></li>
-                            </ul>
+                            // <Link to={`${url}/${index} key=`post-${index}`}>
+                            // </Link>
+                            
+                            <div>
+                                <div key={issue.id}><Issue issue = {issue} /></div>
+                            </div>
                         ))
                     }
                 </div>

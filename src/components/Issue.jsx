@@ -6,7 +6,7 @@ const Issue = props => {
     return (
        <>
         <p>{issue.title}</p>
-        <p>{issue.url}</p>
+        <a href={issue.url}>{issue.url}</a>
         <p>{issue.body}</p>
        </> 
     )

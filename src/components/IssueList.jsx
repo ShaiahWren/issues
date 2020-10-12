@@ -1,11 +1,13 @@
-import { React, Component } from 'react';
+import React, {Component} from 'react';
+
+import Issue from './Issue';
 
 
 class IssueList extends Component {
     state = {
-        issueData = [],
+        issueData: [],
     }
-    loadData = async () => {
+    async loadData() {
         const response = await fetch("https://api.github.com/repos/facebook/create-react-app/issues");
         const data = await response.json();
         console.log("The data is: ", data)
@@ -20,9 +22,21 @@ class IssueList extends Component {
     }
 
     render() {
-        const { issueData } = this.state.issueData;
+        const { issueData } = this.state;
+        console.log("Issue data: ", issueData);
         return (
-
+            <>
+                <div>
+                    {
+                        issueData.map((issue, index) => (
+                            <ul>
+                                <li key={issue.id}><Issue issue = {issue} /></li>
+                            </ul>
+                        ))
+                    }
+                </div>
+            </>
+           
         );
     }
 }

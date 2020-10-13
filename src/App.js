@@ -8,9 +8,13 @@ import './App.css';
 
 function App() {
   return (
+    
     <div className="App">
-      <IssueList />
+      <Router >
+        <IssueList />
+      </Router>
     </div>
+    
   );
 }
 

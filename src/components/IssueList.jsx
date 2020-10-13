@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
+import {Route, Link } from 'react-router-dom';
 
 import Issue from './Issue';
+import './IssueList.css';
 
 
 class IssueList extends Component {
+
     state = {
         issueData: [],
     }
@@ -20,24 +23,33 @@ class IssueList extends Component {
              issueData: issueData,
          });
     }
-
     render() {
         const { issueData } = this.state;
         console.log("Issue data: ", issueData);
+
         return (
             <>
-                <div>
-                    {
-                        issueData.map((issue, index) => (
-                            // <Link to={`${url}/${index} key=`post-${index}`}>
-                            // </Link>
-                            
-                            <div>
-                                <div key={issue.id}><Issue issue = {issue} /></div>
-                            </div>
-                        ))
-                    }
-                </div>
+            {!!issueData.length ? (
+                <>
+                    <h1>GiHub Issues List</h1>
+                    <Route exact path ="/">
+                        <ul>
+                            {issueData.map((issue) => {
+                                return (
+                                    <li key={issue.id}>
+                                        {issue.title}
+                                        <a href={`/issue/${issue.number}`}>View Details</a>
+                                    </li>);
+                            })}
+                        </ul>
+                    </Route>
+                    <Route path={`/issue/:issue_number`}>
+                        <h2>This will be an issue</h2>
+                    </Route>
+                </>
+                ) : (
+                    <p>Fetching issues ...</p>
+                )}
             </>
            
         );

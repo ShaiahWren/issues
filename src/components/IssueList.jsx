@@ -38,13 +38,14 @@ class IssueList extends Component {
                                 return (
                                     <li key={issue.id}>
                                         {issue.title}
-                                        <a href={`/issue/${issue.number}`}>View Details</a>
+                                        <Link to={`/issue/${issue.number}`}>View Details</Link>
                                     </li>);
                             })}
                         </ul>
                     </Route>
                     <Route path={`/issue/:issue_number`}>
-                        <h2>This will be an issue</h2>
+                        <Link to="/">Return to Issue List</Link>
+                        <Issue issueData={issueData} />
                     </Route>
                 </>
                 ) : (
